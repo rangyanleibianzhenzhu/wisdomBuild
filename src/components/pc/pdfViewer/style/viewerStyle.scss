@@ -1,0 +1,28 @@
+.scroll-viewer {
+  body {
+    background: rgba(64, 64, 64, 1);
+  }
+  #toolbarContainer{
+    display: block;
+  }
+}
+
+.not-scroll-viewer {
+  body {
+    background: transparent;
+  }
+  #toolbarContainer{
+    display: none;
+  }
+  #viewerContainer {
+    position: static;
+    overflow: hidden;
+  }
+  .pdfViewer .page {
+    margin: 9px auto;
+    border: solid 1px #E5E5E5;
+    border-image: none;
+    background-clip: initial;
+    background: transparent;
+  }
+}

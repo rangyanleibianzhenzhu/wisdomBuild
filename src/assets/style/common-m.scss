@@ -1,0 +1,10 @@
+/**
+* 移动端公用样式
+*/
+@import "./variables.scss";
+
+@media (max-width: $max-mobile-width) {
+  body {
+    font-size: $base-font-size * 2; /*yes*/
+  }
+}

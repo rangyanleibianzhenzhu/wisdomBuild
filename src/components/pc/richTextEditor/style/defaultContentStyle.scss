@@ -1,0 +1,20 @@
+@import "@/assets/style/variables.scss";
+body {
+  margin: 0;
+  padding: 0;
+}
+.mce-content-body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #333;
+  table {
+    font-size: 14px;
+  }
+  img{
+    max-width:100%;
+    height: auto;
+  }
+}
+.rich-text-edit-body {
+  padding: 10px;
+}

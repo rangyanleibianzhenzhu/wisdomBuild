@@ -1,0 +1,184 @@
+/**
+* PC端公用样式
+*//**
+* PC端公用样式
+*/
+@import "./variables.scss";
+body {
+  font-size: $base-font-size;
+}
+/* 覆盖 element 的 Tooltip 组件样式，设置最大宽度 */
+.el-tooltip__popper{
+  max-width: 400px;
+}
+.layout, .popup {
+  a {
+    color: #333;
+    padding-bottom: 2px;
+    /*border-bottom: 1px solid #ccc;*/
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 30px;
+    transition: border-bottom .2s;
+  }
+  a:hover {
+    border-bottom-color: #333;
+  }
+  // input[type="password"], input[type="text"], input:not([type]) {
+  input {
+    height: $form-item-height;
+    padding: 0 $input-padding;
+    border: 1px solid $border-color-base;
+    border-radius: $input-border-radius;
+    font-size: $base-font-size;
+    color: $input-font-color;
+    outline: none;
+    &:focus {
+      @include primary-border-color()
+    }
+  }
+  textarea {
+    resize: none;
+    padding: $input-padding;
+    font-size: $base-font-size;
+    line-height: 18px;
+    border: 1px solid $border-color-base;
+    border-radius: $input-border-radius;
+    color: $input-font-color;
+    font-family: transparent;
+    outline: none;
+    &:focus {
+      @include primary-border-color()
+    }
+  }
+}
+/* 表单样式 */
+.base-form {
+  width: 100%;
+  margin: 5px 0;
+  background-color: #fff;
+  color: $form-text-color;
+  .form-item {
+    display: inline-flex;
+    margin: 5px 0 0;
+    @for $i from 1 through 12 {
+      &.col-12-#{$i} {
+        width: 100% / 12 * $i;
+      }
+    }
+    &.error {
+      .form-item-value {
+        >input[type="password"], >input[type="text"], >input:not([type]), >textarea {
+          border-color: $color-danger !important;
+        }
+        >.datepicker .datepicker-selection-input {
+          border-color: $color-danger !important;
+        }
+        >.money-input-wrap >input, >.money-input-wrap .money-show-input{
+          border-color: $color-danger !important;
+        }
+        >.common-el-select .el-select .el-input__inner {
+          border-color: $color-danger !important;
+        }
+        >.el-select .el-input__inner {
+          border-color: $color-danger !important;
+        }
+        >.el-input .el-input__inner {
+          border-color: $color-danger !important;
+        }
+        >.el-textarea .el-textarea__inner {
+          border-color: $color-danger !important;
+        }
+      }
+    }
+    .form-item-label {
+      flex: none;
+      display: inline-flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 8px;
+      color: $color-text-secondary;
+      text-align: right;
+      // vertical-align: middle;
+      box-sizing: content-box;
+      height: $form-item-height;
+      line-height: $form-item-height;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @for $i from 5 through 12 {
+        &.label-size-#{$i} {
+          width: #{$i}em;
+        }
+      }
+      .required {
+        margin-right: 5px;
+        color: $color-danger;
+      }
+      >span {
+      }
+    }
+    .form-item-value {
+      flex: 1;
+      // vertical-align: middle;
+      >input[type="password"], >input[type="text"], >input:not([type]) {
+        width: 100%;
+      }
+      >textarea {
+        width: 100%;
+      }
+      >input[type="text"]:disabled, >input:not([type]):disabled, >textarea:disabled {
+        background-color: $input-disabled-bg-color;
+        color: $color-text-placeholder
+      }
+      >.radio-list {
+        height: $form-item-height;
+        line-height: $form-item-height;
+      }
+      >.checkbox-item {
+        height: $form-item-height;
+        line-height: $form-item-height;
+      }
+      >.datepicker {
+        width: 100%;
+      }
+      >.switch-bar {
+        margin-top: ($form-item-height - 20px) / 2;
+      }
+      >.common-el-select {
+        >.el-select {
+          width: 100%;
+        }
+      }
+      >.el-select {
+        width: 100%;
+      }
+      >.el-radio-group {
+        .el-radio {
+          line-height: $form-item-height;
+        }
+      }
+      >.el-checkbox {
+        line-height: $form-item-height;
+      }
+      >.el-date-editor {
+        width: 100%;
+      }
+      >.el-switch {
+        margin-top: ($form-item-height - 20px) / 2;
+      }
+      .item-readonly-value {
+        line-height: $form-item-height;
+        vertical-align: middle;
+        color: $color-text-regular;
+      }
+    }
+  }
+
+  .buttons-wrap {
+    justify-content: flex-end;
+    button {
+      margin-right: 20px;
+    }
+  }
+}
