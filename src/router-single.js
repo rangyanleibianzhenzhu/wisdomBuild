@@ -13,12 +13,12 @@ const routerRoot = APP_ROUTER_ROOT // 路由根路径 （由webpack的插件Defi
 /* eslint-disable no-undef */
 const isRecordScrollPosition = APP_SHOW_TABS // 是否显示功能tab页签
 
-const Login = () => import(/* webpackChunkName: "login" */ './pages/login/index.vue')
 const Layout = () => import(/* webpackChunkName: "layout" */ '@/layout/pc/AppLayout.vue')
 const NotFound = () => import(/* webpackChunkName: "not-found" */ '@/pages/NotFound.vue')
-const PcHome = () => import(/* webpackChunkName: "pc-home" */ './pages/layout/home/Home.vue')
-const PcIcon = () => import(/* webpackChunkName: "pc-icon" */ './pages/layout/icon/IconDemo.vue')
-const PcScroll = () => import(/* webpackChunkName: "pc-scroll" */ './pages/layout/scroll/ScrollDemo.vue')
+const Home = () => import(/* webpackChunkName: "pc-home" */ './pages/layout/home/Home.vue')
+const DangCost = () => import(/* webpackChunkName: "pc-dangCost" */ './pages/layout/dangCost/DangCost.vue')
+const SecondLevel = () => import(/* webpackChunkName: "pc-secondLevel" */ './pages/layout/secondLevel/SecondLevel.vue')
+const DangActivity = () => import(/* webpackChunkName: "pc-dangActivity" */ './pages/layout/dangActivity/DangActivity.vue')
 
 Vue.use(Router)
 
@@ -35,11 +35,6 @@ export default function (store) {
         /* [auto single-line command {getUserInfoBeforeCreate=true}] */ redirect: { name: 'home' }
       },
       {
-        path: '/login',
-        name: 'login',
-        component: Login
-      },
-      {
         path: '/layout',
         component: Layout,
         redirect: { name: 'home' },
@@ -47,17 +42,22 @@ export default function (store) {
           {
             path: 'home',
             name: 'home',
-            component: PcHome
+            component: Home
           },
           {
-            path: 'icon',
-            name: 'pcIcon',
-            component: PcIcon
+            path: 'dangCost',
+            name: 'dangCost',
+            component: DangCost
           },
           {
-            path: 'scroll',
-            name: 'pcScroll',
-            component: PcScroll
+            path: 'secondLevel',
+            name: 'secondLevel',
+            component: SecondLevel
+          },
+          {
+            path: 'dangActivity',
+            name: 'dangActivity',
+            component: DangActivity
           }
         ]
       },

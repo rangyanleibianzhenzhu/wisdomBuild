@@ -12,7 +12,8 @@
     </div>
     <div class="nav-wrap">
       <div class="nav-index-wrap" :class="[isStartNav && index === curIndex ? 'cur' : '']" v-for="(item, index) in bannerList" :key="item.src" @click="onChooseIndex(index)">
-        <b class="nav-index" :class="indexClass">
+        {{item.name ? item.name : ''}}
+        <b class="nav-index" :class="indexClass" v-if="!item.name">
           <span class="line-process" v-if="indexType === 'line'" :style="{transitionDuration: interval+'ms'}"></span>
         </b>
       </div>

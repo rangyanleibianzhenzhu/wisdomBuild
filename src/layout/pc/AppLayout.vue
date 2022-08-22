@@ -1,27 +1,14 @@
 <template>
-  <div ref="layout" class="layout" :class="{'full-screen': fullScreen, 'fold-menu': foldMenu, 'show-tabs': showTabs, 'show-tab-popup': showTabPopup}">
+  <div ref="layout" class="layout">
+    <!-- <img src="../../assets/img/mapBg.png" alt="中国地图1-装饰" class="mapBg"> -->
     <AppHeader :foldMenu="foldMenu" :fullScreen="fullScreen" />
-    <!-- <div class="main">
-      <AppMenu :foldMenu="foldMenu" :fullScreen="fullScreen" />
-      <component v-bind:is="containerComponent">
-        <ScrollToTop></ScrollToTop>
-        <div v-show="isShowLoading" class="loading">
-          <div>
-            <BaseSpinner spinner="spiral" theme="white" size="l"></BaseSpinner>
-            <div v-if="loadingMessage" class="msg">{{loadingMessage}}</div>
-          </div>
-        </div>
-      </component>
-    </div> -->
+    <div class="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
-import BaseSpinner from '@/components/base/spinner'
 import AppHeader from './AppHeader.vue'
-import AppMenu from './AppMenu.vue'
-import AppTabsView from './AppTabsView.vue'
-import AppView from './AppView.vue'
-import ScrollToTop from './ScrollToTop.vue'
 import { mapGetters, mapMutations } from 'vuex'
 import { SET_CUR_FULL_SCREEN, SET_CUR_FOLD_MENU } from '@/store/mutation-types.js'
 import { QUERY_USER_INFO } from '@/store/action-types.js'
@@ -33,9 +20,6 @@ export default {
   name: 'AppLayout',
   components: {
     AppHeader,
-    AppMenu,
-    ScrollToTop,
-    BaseSpinner
   },
   data () {
     return {
@@ -102,15 +86,20 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped px2rem="false">
+<style lang="scss" scoped>
 .layout {
   min-height: 100vh;
   position: relative;
   overflow-x: auto;
   background: url("../../assets/img/backgroud.png") no-repeat center;
   background-size: cover;
-  &.show-tab-popup {
-    overflow: hidden; /* 当显示tab页签时不出现横向滚动条，为避免tab页内弹窗随滚动条滚动 */
+  .mapBg{
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    transform: scaleX(1.5);
+    width: 1000px;
+    height: 1000px;
   }
   .main {
     min-width: $app-min-width;
@@ -119,42 +108,8 @@ export default {
     top: $app-header-height;
     right: 0;
     bottom: 0;
-    background-color: $bg-color-base;
     transition: top .2s ease;
     transition-delay: .1s;
-  }
-  .loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, .65);
-    text-align: center;
-    z-index: 2000;
-    .msg {
-      margin-top: 10px;
-      color: $color-text-placeholder;
-      font-size: 16px;
-    }
-  }
-}
-.fold-menu {
-  .main {
-    .container {
-      left: 50px;
-    }
-  }
-}
-.full-screen {
-  .main {
-    top: 0;
-    .container {
-      left: 0;
-    }
   }
 }
 </style>

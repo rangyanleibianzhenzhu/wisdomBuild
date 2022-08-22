@@ -28,6 +28,9 @@ input, label, select, option, textarea, button, fieldset, legend, pre {
 .clear {
   clear: both;
 }
+ol,ul{
+  list-style: none;
+}
 
 /* 图片加载器（兼容IE9）
 [ieVersion = "9"] {

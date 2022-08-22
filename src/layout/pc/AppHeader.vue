@@ -1,76 +1,73 @@
 <template>
-  <header class="app-header" :class="{'hidden': fullScreen}">
-    <ul class="buttonBox">
-      <li class="button1">首页</li>
-      <li class="button2">党费情况</li>
-      <li class="title">中核二二党建云平台</li>
-      <li class="button3">二级单位</li>
-      <li class="button4">党建活动</li>
+  <header class="app-header">
+    <h2 class="title">中核二二党建云平台</h2>
+    <ul class="menu-list">
+      <template v-for="menu in menus">
+        <router-link tag="li" 
+          :key="menu.id" 
+          :data-id="menu.id"
+          :exact="menu.exact"
+          :to="menu.url"
+          :class="menu.class">
+          {{menu.name}}
+        </router-link>
+      </template>
     </ul>
+    <span class="time">{{ todayTime | dateTime}}{{' '+ todayDay}}</span>
   </header>
 </template>
 <script>
-import AppBreadcrumb from './AppBreadcrumb.vue'
-import { mapGetters } from 'vuex'
-import clientDetect from '@/assets/js/clientDetect.js'
-import JSONFormat from '@/assets/js/jsonFormat.js'
-
 export default {
   name: 'AppHeader',
-  components: {
-    AppBreadcrumb
-  },
+  components: {},
   props: {
-    foldMenu: Boolean,
-    fullScreen: Boolean
   },
   data () {
-    return {}
+    return {
+      // 菜单信息
+      menus: [
+        {
+          id: '1', // 菜单ID
+          class: 'button1',
+          name: '首页', // 菜单名称
+          url: '/layout/home', // 页面路由
+          exact: true, // 路由是否精确匹配
+          cache: true // 是否缓存（默认为：true）
+        },
+        {
+          id: '2',
+          class: 'button2',
+          name: '党费情况',
+          url: '/layout/dangCost',
+        },
+        {
+          id: '3',
+          class: 'button3',
+          name: '二级单位',
+          url: '/layout/secondLevel'
+        },
+        {
+          id: '4',
+          class: 'button4',
+          name: '党建活动',
+          url: '/layout/dangActivity'
+        },
+      ],
+      todayTime: new Date(),
+      todayDay: '星期'+"日一二三四五六".charAt(new Date().getDay())
+    }
   },
   computed: {
-    ...mapGetters(['userInfo'])
+  },
+  created () {
   },
   mounted () {
-    // 获取用户姓名
-    /* this.$apiPost({
-      url: '/user/getUser',
-      apiType: 'api'
-    }).then(res => {
-      this.userName = res.name
-    }) */
   },
   methods: {
-    // 菜单切换
-    menuToggle () {
-      this.$eventBus.$emit('fold-menu', !this.foldMenu)
-    },
-    // 退出
-    logout () {
-      this.$apiPost({
-        url: '/api/sys/logout'
-      }).then(res => {
-        this.$router.push('/login')
-      })
-    },
-    // 跳转到移动版页面
-    goToMobilePage () {
-      this.$router.push('/m')
-    },
-    // 检测客户端信息
-    detectClient () {
-      const clientInfo = clientDetect()
-      this.$popup({
-        title: '客户端信息',
-        html: new JSONFormat(clientInfo).toString(),
-        width: 400,
-        height: 500,
-        contentWrapperStyle: { padding: '20px' }
-      })
-    }
   }
 }
 </script>
-<style lang="scss" scoped px2rem="false">
+<style lang="scss" scoped>
 @font-face{
   font-family: PangMenZhengDao;
   src: url('../../assets/font/PangMenZhengDao.ttf');
@@ -78,202 +75,87 @@ export default {
 .app-header {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 3px;
   right: 0;
-  min-width: $app-min-width;
-  height: $app-header-height;
-  background: url("../../assets/img/toubu.png") no-repeat;
+  height: 120px;
+  background: url("../../assets/img/toubu.png") center 0 no-repeat;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ul.buttonBox {
+  h2.title{
+    font-family: 'PangMenZhengDao';
+    font-weight: 400;
+    font-size: 65px;
+    color: #FFE7B4;
+    letter-spacing: 4px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .time{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    font-size: 20px;
+    color: #FFE7B4;
+    letter-spacing: 0;
+    line-height: 26px;
+    font-weight: 700;
+  }
+  ul.menu-list {
     height: 100%;
+    margin: 0 245px;
+    list-style: none;
     li {
-      font-size: 22px;
+      font-size: 40px;
       color: #D1997E;
-      line-height: 30px;
+      line-height: 40px;
       font-weight: 700;
-      display: inline-block;
-    }
-    .title{
-      font-family: 'PangMenZhengDao';
-      
-      font-size: 48px;
-      color: #FFE7B4;
-      letter-spacing: 4px;
       text-align: center;
+      line-height: $app-header-height;
+      display: inline-block;
     }
     .button1{
-      width: 100px;
+      width: 200px;
       height: 100%;
-      text-align: center;
-      line-height: $app-header-height;
       background: url("../../assets/img/button1.png") center no-repeat;
-      background-size: 100%;
+      background-size: 113%;
+      &.active {
+        background: url("../../assets/img/button1checked.png") center no-repeat;
+        background-size: 113%;
+      }
     }
     .button2{
-      width: 100px;
+      width: 200px;
       height: 100%;
-      text-align: center;
-      line-height: $app-header-height;
       background: url("../../assets/img/button2.png") center no-repeat;
       background-size: 100%;
+      margin-right: 520px;
+      margin-left: -25px;
+      &.active {
+        background: url("../../assets/img/button2checked.png") center no-repeat;
+        background-size: 100%;
+      }
     }
     .button3{
-      width: 100px;
+      width: 200px;
       height: 100%;
-      text-align: center;
-      line-height: $app-header-height;
       background: url("../../assets/img/button3.png") center no-repeat;
       background-size: 100%;
+      &.active {
+        background: url("../../assets/img/button3checked.png") center no-repeat;
+        background-size: 100%;
+      }
     }
     .button4{
-      width: 100px;
+      width: 200px;
       height: 100%;
-      text-align: center;
-      line-height: $app-header-height;
       background: url("../../assets/img/button4.png") center no-repeat;
       background-size: 100%;
-    }
-  }
-  
-
-
-  
-  .left {
-    float: left
-  }
-
-  .logo {
-    @include primary-font-color();
-    width: $app-menu-width;
-    height: 100%;
-    line-height: $app-header-height;
-    background-color: #002040;
-    font-size: 28px;
-    text-align: center;
-    box-shadow: 2px 0 6px rgba(0,21,41,.35);
-    overflow: hidden;
-    transition: width .2s ease;
-    transition-delay: .1s;
-    .fa-icon {
-      vertical-align: -5%;
-    }
-    .sys-name {
-      display: inline-block;
-      margin: 0 30px 0 10px;
-      padding: 0;
-      line-height: $app-header-height;
-      vertical-align: 10%;
-      color: #FFF;
-      font-size: 18px;
-      white-space: nowrap;
-    }
-    &.fold {
-      width: $app-menu-fold-width;
-    }
-  }
-
-  .menu-switch {
-    @include primary-font-color();
-    display: inline-block;
-    width: 50px;
-    height: 100%;
-    line-height: $app-header-height;
-    font-size: 20px;
-    text-align: center;
-    transition: .2s ease-out;
-    transition-delay: .1s;
-    >svg {
-      vertical-align: -6%;
-    }
-  }
-
-  .right {
-    float: right;
-    display: flex;
-    .icon-button {
-      cursor: default;
-      >.icon {
-        @include primary-font-color();
+      margin-left: -30px;
+      &.active {
+        background: url("../../assets/img/button4checked.png") center no-repeat;
+        background-size: 100%;
       }
-      .icon{
-        margin: 0 5px;
-        width: 1em;
-        vertical-align: middle;
-      }
-      span {
-        min-width: 20px;
-        font-size: 14px;
-        vertical-align: middle;
-      }
-    }
-    .mobile, .client-info {
-      position: relative;
-      display: inline-block;
-      padding: 0;
-      margin-right:15px;
-      font-size: 20px;
-      vertical-align: middle;
-      line-height: $app-header-height;
-      opacity: 1;
-      transition: .1s ease-out;
-      transition-delay: .2s;
-    }
-    .user{
-      position: relative;
-      display: inline-block;
-      padding: 0;
-      margin-right:32px;
-      font-size: 18px;
-      line-height: $app-header-height;
-      opacity: 1;
-      transition: .1s ease-out;
-      transition-delay: .2s;
-
-      .logout {
-        padding: 0 10px;
-        position: absolute;
-        top: 35px;
-        right: 0;
-        height: 0;
-        width: 80px;
-        overflow-y: hidden;
-        line-height: 40px;
-        text-align: center;
-        background-color: #FFF;
-        color: #666;
-        border-radius: 5px;
-        box-shadow: 0 0 3px rgba(0, 0, 0, .3);
-        opacity: 0;
-        z-index: 999;
-        cursor: pointer;
-      }
-      &:hover {
-        .logout {
-          opacity: 1;
-          top: 45px;
-          height: auto;
-          transition: 300ms;
-        }
-      }
-    }
-  }
-
-  &.hidden {
-    overflow: hidden;
-    height: 0;
-    .logo {
-      width: 0;
-      .sys-name {
-        opacity: 0;
-      }
-    }
-    .user, .menu-switch, .mobile, ::v-deep .breadcrumb {
-      margin-top: -30px;
-      opacity: 0;
-      transition-delay: 0s;
     }
   }
 }
