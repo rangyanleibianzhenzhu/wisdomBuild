@@ -75,61 +75,98 @@ export default {
 			let myChart = echarts.init(document.getElementById('ljNumberEcharts')), option
 
 			option = {
-				// backgroundColor: '#2c343c',
-				// title: {
-				// 	text: 'Customized Pie',
-				// 	left: 'center',
-				// 	top: 20,
-				// 	textStyle: {
-				// 		color: '#ccc'
-				// 	}
-				// },
-				tooltip: {
-					trigger: 'item'
+				title: {
+					text: 'Stacked Area Chart'
 				},
-				visualMap: {
-					show: false,
-					min: 80,
-					max: 600,
-					inRange: {
-						colorLightness: [0, 1]
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross',
+						label: {
+							backgroundColor: '#6a7985'
+						}
 					}
 				},
+				legend: {
+					data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+				},
+				toolbox: {
+					feature: {
+						saveAsImage: {}
+					}
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: [
+					{
+						type: 'category',
+						boundaryGap: false,
+						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+					}
+				],
+				yAxis: [
+					{
+						type: 'value'
+					}
+				],
 				series: [
 					{
-						name: 'Access From',
-						type: 'pie',
-						radius: '55%',
-						center: ['50%', '50%'],
-						data: [
-							{ value: 335, name: 'Direct' },
-							{ value: 310, name: 'Email' },
-							{ value: 274, name: 'Union Ads' },
-						].sort(function (a, b) {
-							return a.value - b.value;
-						}),
-						roseType: 'radius',
+						name: 'Email',
+						type: 'line',
+						stack: 'Total',
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [120, 132, 101, 134, 90, 230, 210]
+					},
+					{
+						name: 'Union Ads',
+						type: 'line',
+						stack: 'Total',
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [220, 182, 191, 234, 290, 330, 310]
+					},
+					{
+						name: 'Video Ads',
+						type: 'line',
+						stack: 'Total',
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [150, 232, 201, 154, 190, 330, 410]
+					},
+					{
+						name: 'Direct',
+						type: 'line',
+						stack: 'Total',
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
+						},
+						data: [320, 332, 301, 334, 390, 330, 320]
+					},
+					{
+						name: 'Search Engine',
+						type: 'line',
+						stack: 'Total',
 						label: {
-							color: 'rgba(255, 255, 255, 0.3)'
+							show: true,
+							position: 'top'
 						},
-						labelLine: {
-							lineStyle: {
-								color: 'rgba(255, 255, 255, 0.3)'
-							},
-							smooth: 0.2,
-							length: 10,
-							length2: 20
+						areaStyle: {},
+						emphasis: {
+							focus: 'series'
 						},
-						itemStyle: {
-							color: '#c23531',
-							shadowBlur: 200,
-							shadowColor: 'rgba(0, 0, 0, 0.5)'
-						},
-						animationType: 'scale',
-						animationEasing: 'elasticOut',
-						animationDelay: function (idx) {
-							return Math.random() * 200;
-						}
+						data: [820, 932, 901, 934, 1290, 1330, 1320]
 					}
 				]
 			};
