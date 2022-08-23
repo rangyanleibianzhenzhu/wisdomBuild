@@ -5,12 +5,12 @@ const px2remOption = {
   defaultEffect: true, // px2rem 是否默认生效
   exclude: /(node_modules)|(element-theme)/, // 不包含规则，默认为 /node_modules/
   baseDpr: 2,             // base device pixel ratio (default: 2)
-  remUnit: 75,            // rem unit value (default: 75)
+  remUnit: 191.5,            // rem unit value (default: 75)
   remPrecision: 6,        // rem value precision (default: 6)
   forcePxComment: 'px',   // force px comment (default: `px`)
   keepComment: 'no',       // no transform value comment (default: `no`)
   shouldUseDprRule: function(rule){
-    let list = ['font', 'font-size'];
+    let list = [];
     return list.some(function(item) {
       return item === rule.property;
     })

@@ -77,10 +77,10 @@
   function refreshRem(){
     flexible.isMobile = true;
     var width = docEl.getBoundingClientRect().width;
-    if (width / dpr > 540) {
-      width = 540 * dpr;
-      flexible.isMobile = false;
-    }
+    // if (width / dpr > 540) {
+    //   width = 540 * dpr;
+    //   flexible.isMobile = false;
+    // }
     var rem = width / 10;
     docEl.style.fontSize = rem + 'px';
     flexible.rem = win.rem = rem;
