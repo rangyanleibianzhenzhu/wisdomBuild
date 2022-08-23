@@ -314,7 +314,7 @@ export default {
 .dangFlow {
   width: 100%;
   height: 220px;
-  margin-top: 30px;
+  margin-top: 40px;
 	position: relative;
 	display: flex;
 	>div{
@@ -330,7 +330,8 @@ export default {
 				color: #FED29A;
 				letter-spacing: 0;
 				line-height: 24px;
-				font-weight: 700;		
+				font-weight: 700;
+    		margin: 0 20px;		
 			}
 			ul.middle{
 				display: flex;
@@ -343,7 +344,7 @@ export default {
 					border: 1px solid rgba(255,105,105,1);
 					box-shadow: inset 0px 0px 8px 4px rgba(250,70,68,0.5);
 					border-radius: 4px;
-					padding: 10px;
+					padding: 0 16px;
 					span{
 						&:nth-child(1){
 							font-size: 12px;
@@ -366,8 +367,8 @@ export default {
 			}
 			ol.lengends{
 				position: absolute;
-				right: -200px;
-				top: 40px;
+				right: 0;
+				top: 10px;
 				display: flex;
 				li{
 					font-size: 12px;
@@ -376,10 +377,13 @@ export default {
 					text-align: right;
 					line-height: 20px;
 					font-weight: 400;
+					margin-right: 16px;
 					label.legend{
 						display: inline-block;
 						width: 12px;
-						height: 5px;
+						height: 2px;
+						margin-bottom: 3px;
+						margin-right: 5px;
 					}
 					&:nth-child(1) .legend{
 						background-image: linear-gradient(270deg, #FFAFAF 0%, #D73738 100%);

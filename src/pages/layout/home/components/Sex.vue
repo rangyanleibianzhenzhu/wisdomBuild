@@ -43,31 +43,31 @@ export default {
   font-size: 16px;
   color: #fed29a;
   letter-spacing: 0;
-  line-height: 30px;
   font-weight: 700;
-  margin-top: 30px;
+  margin-top: 21px;
+  display: flex;
+  align-items: end;
   span {
     padding: 0 10px;
   }
   .seData {
-    display: inline-block;
+    flex: 1;
     .number {
-      width: 400px;
       display: flex;
       justify-content: space-between;
     }
     .percentLine {
-      margin-top: 15px;
+      margin-top: 5px;
       label {
         display: inline-block;
       }
       .boy {
-        height: 20px;
+        height: 8px;
         background-image: linear-gradient(90deg, #5b8ff9 0%, #ddecff 100%);
         border-radius: 8px 0 0 8px;
       }
       .girl {
-        height: 20px;
+        height: 8px;
         background-image: linear-gradient(270deg, #ffafaf 0%, #d73738 100%);
         border-radius: 0 8px 8px 0;
       }

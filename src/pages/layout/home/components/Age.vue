@@ -64,17 +64,18 @@ export default {
 </script>
 <style lang="scss" scoped>
 .age {
-  width: 450px;
-  height: 220px;
+  width: 442px;
+  height: 186px;
   background: rgba(94, 13, 12, 0.4);
   border: 1px solid rgba(255, 105, 105, 1);
   border-radius: 4px;
-  margin-top: 30px;
+  margin-top: 16px;
   overflow: hidden;
   .title {
     width: 102px;
     height: 32px;
     text-align: center;
+    padding-right: 10px;
     position: relative;
     font-size: 16px;
     color: #fed29a;
@@ -85,8 +86,8 @@ export default {
     &::after {
       display: inline-block;
       content: "";
-      width: 120px;
-      height: 40px;
+      width: 102px;
+      height: 32px;
       transform: skewX(-30deg);
       background-image: linear-gradient(180deg, #5e0d0c 0%, #971e1c 100%);
       border-radius: 4px 0px 0px 0px;
@@ -97,10 +98,12 @@ export default {
     }
   }
   ol.agelist {
-    list-style: none;
     margin-top: 20px;
+    padding: 0 24px;
     li {
       display: flex;
+      align-items: center;
+      margin-bottom: 16px;
       span {
         font-size: 12px;
         color: #ffffff;
@@ -110,7 +113,7 @@ export default {
         font-weight: 400;
       }
       div.percent {
-        width: 290px;
+        flex: 1;
         height: 16px;
         background-color: #5e0d0c;
         margin: 0 20px;

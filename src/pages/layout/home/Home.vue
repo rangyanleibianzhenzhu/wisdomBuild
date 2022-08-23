@@ -74,14 +74,17 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped px2rem="false">
+<style lang="scss" scoped>
 .home {
-  padding: 30px 50px;
+  padding: 45px 35px 18px;
   position: relative;
   background: url('../../../assets/img/mapBg.png') center no-repeat;
   background-size: cover;
   .top{
     display: flex;
+    .left{
+      width: 442px;
+    }
   }
   .middle{
     flex: 1;

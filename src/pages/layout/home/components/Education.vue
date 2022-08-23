@@ -96,8 +96,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .education {
-  width: 450px;
-  height: 220px;
+  width: 442px;
+  height: 200px;
   background: rgba(94, 13, 12, 0.4);
   border: 1px solid rgba(255, 105, 105, 1);
   border-radius: 4px;
@@ -107,18 +107,19 @@ export default {
     width: 102px;
     height: 32px;
     text-align: center;
+    padding-right: 10px;
     position: relative;
     font-size: 16px;
     color: #fed29a;
     letter-spacing: 0;
-    line-height: 32px;
+    line-height: 30px;
     font-weight: 700;
     z-index: 1;
     &::after {
       display: inline-block;
       content: "";
-      width: 120px;
-      height: 40px;
+      width: 102px;
+      height: 32px;
       transform: skewX(-30deg);
       background-image: linear-gradient(180deg, #5e0d0c 0%, #971e1c 100%);
       border-radius: 4px 0px 0px 0px;

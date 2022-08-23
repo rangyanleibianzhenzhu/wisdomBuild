@@ -1,12 +1,11 @@
 <template>
   <div class="formalDangAge">
-    <div class="title">党龄结构
-			<ol class="legendData">
-				<li v-for="item in legends" :key="item.age">
-					<label class="legend"></label>{{item.age}}年
-				</li>
-			</ol>
-		</div>
+    <div class="title">党龄结构</div>
+		<ol class="legendData">
+			<li v-for="item in legends" :key="item.age">
+				<label class="legend"></label>{{item.age}}年
+			</li>
+		</ol>
 		<div class="detail">
 			<ol class="dangAgelist">
 				<li v-for="item in ages" :key="item.age">
@@ -147,16 +146,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 .formalDangAge {
-  width: 450px;
-  height: 220px;
+  width: 442px;
+  height: 153px;
   background: rgba(94, 13, 12, 0.4);
   border: 1px solid rgba(255, 105, 105, 1);
   border-radius: 4px;
   margin-top: 30px;
   overflow: hidden;
+	position: relative;
   .title {
+		width: 102px;
     height: 32px;
-    padding-left: 15px;
+		text-align: center;
+		padding-right: 10px;
     position: relative;
     font-size: 16px;
     color: #fed29a;
@@ -167,8 +169,8 @@ export default {
     &::after {
       display: inline-block;
       content: "";
-      width: 120px;
-      height: 40px;
+      width: 102px;
+      height: 32px;
       transform: skewX(-30deg);
       background-image: linear-gradient(180deg, #5e0d0c 0%, #971e1c 100%);
       border-radius: 4px 0px 0px 0px;
@@ -177,44 +179,43 @@ export default {
       left: -10px;
       z-index: -1;
     }
-		ol.legendData{
-			list-style: none;
-			display: flex;
-			position: absolute;
-			right: 0;
-			top: 10px;
-			li{
-				font-size: 12px;
-				color: #FFFFFF;
-				letter-spacing: 0;
-				text-align: right;
-				line-height: 20px;
-				font-weight: 400;
-				label.legend{
-					display: inline-block;
-					width: 12px;
-					height: 5px;
-				}
-				&:nth-child(1) .legend{
-					background-image: linear-gradient(270deg, #FFAFAF 0%, #D73738 100%);
-					
-				}
-				&:nth-child(2) .legend{
-					background-image: linear-gradient(-59deg, #FFE8BE 0%, #F79D34 100%, #FCAD20 100%);
-					
-				}
-				&:nth-child(3) .legend{
-					background-image: linear-gradient(137deg, #4A7EE9 0%, #E7F1FF 100%);
-				}
+  }
+	ol.legendData{
+		display: flex;
+		position: absolute;
+		right: 0;
+		top: 10px;
+		li{
+			font-size: 12px;
+			color: #FFFFFF;
+			letter-spacing: 0;
+			text-align: right;
+			line-height: 20px;
+			font-weight: 400;
+			margin-right: 24px;
+			label.legend{
+				display: inline-block;
+				width: 12px;
+				height: 2px;
+				margin-bottom: 3px;
+				margin-right: 5px;
+			}
+			&:nth-child(1) .legend{
+				background-image: linear-gradient(270deg, #FFAFAF 0%, #D73738 100%);
+			}
+			&:nth-child(2) .legend{
+				background-image: linear-gradient(-59deg, #FFE8BE 0%, #F79D34 100%, #FCAD20 100%);
+			}
+			&:nth-child(3) .legend{
+				background-image: linear-gradient(137deg, #4A7EE9 0%, #E7F1FF 100%);
 			}
 		}
-  }
+	}
 	.detail{
 		display: flex;
+		padding: 0px 15px 0 26px;
 		ol.dangAgelist {
-			width: 200px;
-			list-style: none;
-			margin-top: 20px;
+			flex: 1;
 			li {
 				display: flex;
 				span {
@@ -224,12 +225,13 @@ export default {
 					text-align: right;
 					line-height: 24px;
 					font-weight: 400;
+					margin-bottom: 16px;
 				}
 				div.percent {
-					width: 290px;
+					flex: 1;
 					height: 16px;
 					background-color: #5e0d0c;
-					margin: 0 20px;
+					margin: 0 8px;
 					position: relative;
 					.chunseColor {
 						height: 100%;
@@ -256,8 +258,8 @@ export default {
 			}
 		}
 		#formalDangAge{
-			width: 200px;
-			height: 200px;
+			width: 150px;
+			height: 150px;
 		}
 	}
 }

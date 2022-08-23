@@ -110,6 +110,7 @@ export default {
     bottom: 0;
     transition: top .2s ease;
     transition-delay: .1s;
+    // overflow-y: hidden;
   }
 }
 </style>
